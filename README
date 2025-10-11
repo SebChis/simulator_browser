@@ -1,0 +1,47 @@
+/* CHISELITA Sebastian - 314CA */
+
+# SDA TEMA 1
+
+Mai jos e prezentarea implementarii temei.
+
+- [Simulare browser](#simulare-browser)
+  - [Main](#main)
+  - [Structuri](#structuri)
+  - [Taburi si pagini](#taburi-si-pagini)
+  - [Informatii aditionale](#informatii-aditionale)
+
+## Main
+
+```bash
+Fisierul main.c se ocupa de prelucrarea datelor din fiserul de intrare:
+Am initializat browserul cu pagina sa implicita ("init_browser");
+Am citit si prelucrat paginile din fisier ("read_pages");
+In functia "main" am procesat comenzile si in final am eliberam memoria pentru datele alocate.
+```
+
+## Structuri
+
+```bash
+Am definit structurile cu typedef structurile ca sa le pot initializa mai usor;
+Pe langa structurile din cerinta, am adaugat structuri ajutatoare care sa ma ajute sa-mi formez o lista inlantuita pentru stiva si una dublu inlantuita si circulara pentru tab-uri.
+```
+
+## Taburi si pagini
+
+```bash
+Mereu cand se adauga/creaza un tab, in acesta intra pagina implicina pe care o aloc dinamic;
+Restul paginilor sunt recunoscute printr-un pointer la vectorul de pagini deci nu e nevoie sa eliberez decat pagina cu id = 0 la fiecare pas;
+De aceea am functii speciale precum "free_page_id_zero";
+Aceste pagini pot fi salvate in taburi in pagina lor curenta sau in una din cele 2 stive de istoric;
+Avem nevoie doar de taburi pentru operatiile: "NEW_TAB", "CLOSE", "OPEN <ID>", "NEXT", "PREV" si "PRINT";
+Iar paginile contribuie la: "PAGE <ID>", "BACKWARD", "FORWARD" si "PRINT_HISTORY <ID>".
+
+```
+
+## Informatii aditionale
+
+```bash
+La rularea pe calculatorul propriu, am primit pe teste 119/120, deoarece la Valgrind mi-a dat 19/20;
+Totusi, checker-ul arata ca Valgrund a trecut de toate cel 38 de teste si primesc mesajul de eroare:
+"./checker.sh: line 109: printf: 19.9994: invalid number".
+```
